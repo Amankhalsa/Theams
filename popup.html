@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	body{
+		background-color: skyblue;
+	}
+	#my_modal{
+  width: 500px;
+  height: 300px;
+  border: 1px solid #333;
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+  background: #f1f1f1;
+
+  /*// making modal center*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+
+  /*// hide for the first time */
+
+  display: none;
+}
+#my_modal h2{
+  margin: 0px;
+}
+#show_time{
+  font-size: 18px;
+  color: red;
+}
+</style>
+</head>
+<body>
+<!-- <a onclick="window.open(document.URL, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">
+Open New Window
+</a>
+<button onclick="window.open('https://www.google.com/');">click me </button> -->
+<h1>
+  Automatically show and hide popup modal with time countdown in javascript
+</h1>
+
+
+
+<div id="my_modal">
+  <span id="show_time">0.00</span>
+  <h2>popup modal with time countdown</h2>
+  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta, hic, excepturi laudantium labore debitis suscipit! Hic quae sint placeat quod. Laborum rem facere, harum sapiente libero delectus ipsam quidem natus voluptatibus nam nulla vel. Porro harum beatae est vitae adipisci nesciunt doloremque facilis in officia maxime, odio atque velit, aperiam.</p>
+</div>
+
+
+<script type="text/javascript">
+	
+	var my_modal = document.getElementById('my_modal');
+var span_tag = document.getElementById('show_time');
+var countdown_call = '';
+var time_count = 0;
+
+function showModal(){
+  my_modal.style.display = "block";
+  // countdown after show
+  countdown_call = setInterval(updateTime, 1000); // call for every 1s
+}
+// now show automatically after 1s
+// working
+setTimeout(showModal,1000) // 1000ms
+
+
+// now close 
+function closeModal(){
+  my_modal.style.display = "none";
+}
+// setTimeout(closeModal,3000) // 1000ms
+// no need
+
+// now countdown time
+function updateTime(){
+  time_count++;  
+  span_tag.innerHTML = time_count;
+  if(time_count == 6){
+    clearInterval(countdown_call);
+    closeModal();
+  }
+
+}
+</script>
+</body>
+</html>
